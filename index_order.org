@@ -1,0 +1,136 @@
+* index order
+
+** site tensor M
+
+index order: sigma_{k}, a_{k-1}, a_{k}
+charge sign order: +,-,+
+
+.            -----                 -----
+.  a_{k-1} --|   |-- a_{k}     - --|   |-- +
+.            -----                 -----
+.              |                     |
+.          sigma_{k}                 +
+
+** two-site tensor M
+
+index order: sigma_{k}, sigma_{k+1}, a_{k-1}, a_{k+1}
+charge sign order: +,+,-,+
+
+.            ----------                   ----------
+.  a_{k-1} --|        |-- a_{k+1}     - --|        |-- +
+.            ----------                   ----------
+.              |    |                       |    |
+.       sigma_{k}  sigma_{k+1}              +    +
+
+** MPO site tensor W
+
+index order: b_{k-1}, b_{k}, sigma'_{k}, sigma_{k}
+charge sign order: -,+,+,-
+
+.           sigma_{k}                -
+.              |                     |
+.            -----                 -----
+.  b_{k-1} --|   |-- b_{k}     - --|   |-- +
+.            -----                 -----
+.              |                     |
+.           sigma'_{k}               +
+
+** MPO two-site tensor W
+
+index order: b_{k-1}, b_{k+1}, sigma'_{k}, sigma_{k}, sigma'_{k+1}, sigma_{k+1}
+charge sign order: -,+,+,-,+,-
+
+.       sigma_{k}  sigma_{k+1}              -    -
+.              |    |                       |    |
+.            ----------                   ----------
+.  b_{k-1} --|        |-- b_{k+1}     - --|        |-- +
+.            ----------                   ----------
+.              |    |                       |    |
+.      sigma'_{k}  sigma'_{k+1}             +    +
+
+** L tensor (MPS-MPO-MPS)
+
+index order: a_{k-1}, b_{k-1}, a'_{k-1}
+charge sign order: +,+,-
+
+.  -----                -----
+.  |   |-- a_{k-1}      |   |-- +
+.  |   |                |   |
+.  |   |-- b_{k-1}      |   |-- +
+.  |   |                |   |
+.  |   |-- a'_{k-1}     |   |-- -
+.  -----                -----
+
+** R tensor (MPS-MPO-MPS)
+
+index order: a_{k+l}, b_{k+l}, a'_{k+l}
+charge sign order: -,-,+
+
+.             -----         -----
+.   a_{k+l} --|   |     - --|   |
+.             |   |         |   |
+.   b_{k+l} --|   |     - --|   |
+.             |   |         |   |
+.  a'_{k+l} --|   |     + --|   |
+              -----         -----
+
+** L tensor (MPS-MPS)
+
+index order: c_{k-1}, a_{k-1}
+charge sign order: -,+
+
+.  -----               -----
+.  |   |-- c_{k-1}     |   |-- -
+.  |   |               |   |
+.  |   |-- a_{k-1}     |   |-- +
+.  -----               -----
+
+** R tensor (MPS-MPS)
+
+index order: c_{k+l}, a_{k+l}
+charge sign order: +,-
+
+.            -----         -----
+.  c_{k+l} --|   |     + --|   |
+.            |   |         |   |
+.  a_{k+l} --|   |     - --|   |
+.            -----         -----
+
+** effective Hamiltonian, one-site DMRG
+
+index order: sigma'_{k}, a'_{k-1}, a'_{k}, sigma_{k}, a_{k-1}, a_{k}
+charge sign order: +,-,+,-,+,-
+
+.  -----                       -----     -----                       -----
+.  |   |-- a_{k-1}     a_{k} --|   |     |   |-- +               - --|   |
+.  |   |                       |   |     |   |                       |   |
+.  |   |        sigma_{k}      |   |     |   |           -           |   |
+.  |   |           |           |   |     |   |           |           |   |
+.  |   -------------------------   |     |   -------------------------   |
+.  |                               |     |                               |
+.  |   -------------------------   |     |   -------------------------   |
+.  |   |           |           |   |     |   |           |           |   |
+.  |   |        sigma'_{k}     |   |     |   |           +           |   |
+.  |   |                       |   |     |   |                       |   |
+.  |   |-- a'_{k-1}   a'_{k} --|   |     |   |-- -               + --|   |
+.  -----                       -----     -----                       -----
+
+** effective Hamiltonian, two-site DMRG
+
+index order: sigma'_{k}, sigma'_{k+1}, a'_{k-1}, a'_{k+1},
+             sigma_{k}, sigma_{k+1}, a_{k-1}, a_{k+1}
+charge sign order: +,+,-,+,-,-,+,-
+
+.  -----                              -----     -----                    -----
+.  |   |-- a_{k-1}          a_{k+1} --|   |     |   |-- +            - --|   |
+.  |   |                              |   |     |   |                    |   |
+.  |   |    sigma_{k}   sigma_{k+1}   |   |     |   |      -      -      |   |
+.  |   |        |            |        |   |     |   |      |      |      |   |
+.  |   --------------------------------   |     |   ----------------------   |
+.  |                                      |     |                            |
+.  |   --------------------------------   |     |   ----------------------   |
+.  |   |        |            |        |   |     |   |      |      |      |   |
+.  |   |    sigma'_{k}  sigma'_{k+1}  |   |     |   |      +      +      |   |
+.  |   |                              |   |     |   |                    |   |
+.  |   |-- a'_{k-1}        a'_{k+1} --|   |     |   |-- -            + --|   |
+.  -----                              -----     -----                    -----
