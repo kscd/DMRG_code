@@ -2263,10 +2263,10 @@ class MPS:
                 removed_exponents += exponent
 
         # index order: a_L | a_0 | a'_0 | a'_L => a'_0 | a_0 | a_L | a'_L
-        overlap = norm.swapaxes(0,2)
+        overlap = overlap.swapaxes(0,2)
 
 	# index order: a'_0 | a_0 | a_L | a'_L => a'_0 | a_0 | a'_L | a_L
-        overlap = norm.swapaxes(2,3)
+        overlap = overlap.swapaxes(2,3)
 
         # index order: (a'_0 | a_0) | (a'_L | a_L)
         if self._useReducedTensors:
