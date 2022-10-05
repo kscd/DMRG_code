@@ -371,7 +371,11 @@ class DMRG:
 
         # result_array contains energy, energy variance
         # and summed truncation_error per sweep
-        result_array = np.zeros([3,sweeps])*np.nan
+        if two_site:
+            result_array = np.zeros([3,sweeps])
+            result_array[:2] = np.nan
+        else:
+            result_array = np.zeros([3,sweeps])*np.nan
 
         # find out initial sweep direction
         if B == 1:
