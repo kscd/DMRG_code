@@ -922,6 +922,37 @@ class MPS_system(MPS):
 
         return MPSsum
 
+    #########################################################################
+    # Secondary constructors: provide a more fitted interface than __init__ #
+    #########################################################################
+
+    @classmethod
+    def MPS_from_basis_state(cls,d,D,spin_list):
+	'''
+        Creates a basis state, meaning that one entry in the state vector
+        is one, the rest zero. The selected state is given by the list of spin
+        directions. If for example d=2, spin_list could be [0,0,1,1,0,1]
+        meaning that the first two spins point in one direction, the following
+        two in the other and so forth.
+        '''
+
+        x = super().MPS_from_basis_state(d,D,spin_list)
+
+        # create L/R dummy tensors
+
+        # index order: a_0 | b_0 | a'_0
+        x._L_tensors = [np.array([[[1.0]]])]
+
+        # index order: a_L | b_L | a'_L
+        x._R_tensors = [np.array([[[1.0]]])]
+
+        # set additional attributes
+        x._LR_driver = 'none'
+        x._L_border  =  0
+        x._R_border  = -1
+
+        return x
+
     # set MPO and get MPO
 
     def set_MPO(self,MPO):
