@@ -1060,7 +1060,7 @@ class MPS:
         matrix = tensordot(B_tensor, self._dagger(B_tensor), ((0, 2), (0, 1)))
 
         # return whether maximum deviation from identity matrix
-	# is below normalisation tolerance
+        # is below normalisation tolerance
         if type(matrix) is np.ndarray:
 
             # for dense numpy tensors
@@ -1733,10 +1733,10 @@ class MPS:
 
         This function takes the following arguments:
 
-	pos_left             : The position the left site tensor shall have in
-			       the MPS
-	two_site_tensor      : The two-site tensor to be decomposed into two
-			       one-site tensors. Index order must be:
+        pos_left             : The position the left site tensor shall have in
+                               the MPS
+        two_site_tensor      : The two-site tensor to be decomposed into two
+                               one-site tensors. Index order must be:
                                s_p | s_p+1 | a_p-1 | a_p+1, where p refers to
                                the newly created position. For
                                different_shape=False: len(a_p) = len(a_p+1).
@@ -2265,7 +2265,7 @@ class MPS:
         # index order: a_L | a_0 | a'_0 | a'_L => a'_0 | a_0 | a_L | a'_L
         overlap = overlap.swapaxes(0,2)
 
-	# index order: a'_0 | a_0 | a_L | a'_L => a'_0 | a_0 | a'_L | a_L
+        # index order: a'_0 | a_0 | a_L | a'_L => a'_0 | a_0 | a'_L | a_L
         overlap = overlap.swapaxes(2,3)
 
         # index order: (a'_0 | a_0) | (a'_L | a_L)

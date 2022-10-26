@@ -928,7 +928,7 @@ class MPS_system(MPS):
 
     @classmethod
     def MPS_from_basis_state(cls,d,D,spin_list):
-	'''
+        '''
         Creates a basis state, meaning that one entry in the state vector
         is one, the rest zero. The selected state is given by the list of spin
         directions. If for example d=2, spin_list could be [0,0,1,1,0,1]
